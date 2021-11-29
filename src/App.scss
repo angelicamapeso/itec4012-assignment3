@@ -1,3 +1,5 @@
+@use "./breakpoints";
+
 html,
 body,
 #root {
@@ -18,4 +20,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  width: 100%;
+  max-width: breakpoints.$max-page-width;
 }
