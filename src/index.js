@@ -2,25 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import "./normalize.css";
-import "./index.scss";
-
-import Home from "./pages/Home";
-import BookDetail from "./pages/BookDetail";
-
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <main>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/book/:bookId" element={<BookDetail />} />
-        </Routes>
-      </main>
-    </Router>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
