@@ -4,10 +4,12 @@ import reportWebVitals from "./reportWebVitals";
 
 import App from "./App";
 
+import { BookContextProvider } from "./context/BookContext";
+
 ReactDOM.render(
-  <React.StrictMode>
+  <BookContextProvider>
     <App />
-  </React.StrictMode>,
+  </BookContextProvider>,
   document.getElementById('root')
 );
 
