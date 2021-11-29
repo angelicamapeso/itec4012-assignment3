@@ -1,0 +1,22 @@
+$bp-small: 43em;
+$bp-medium: 62em;
+$bp-large: 82em;
+$max-page-width: 112em;
+
+@mixin sm {
+  @media (min-width: #{$bp-small}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$bp-medium}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$bp-large}) {
+    @content;
+  }
+}
