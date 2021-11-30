@@ -45,7 +45,7 @@ export default function BookCard({
   }
 
   return (
-    <Link className={`book-card ${ !fBook ? 'disabled' : '' }`} to={ `/books/${fBook ? fBook.id : '' }`}>
+    <Link className={`book-card ${ !fBook ? 'disabled' : '' }`} to={ `/book/${fBook ? fBook.id : '' }`}>
       <div className="book-card-wrapper" style={{ backgroundColor: bookColor ? bookColor : '' }}>
         <div className="img-wrapper" style={{ backgroundColor: bookColor ? bookColor : '' }}>
           <img className="img" src={ fBook ? fBook.img : blankImg } alt="" />
