@@ -3,6 +3,8 @@ import "./styles.scss";
 import { useState, useEffect, useContext } from "react";
 import BookContext from "../../context/BookContext";
 
+import BookCard from "../../components/BookCard";
+
 export default function Home() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,10 +30,38 @@ export default function Home() {
   };
 
   const formatBookApiData = (apiItem) => {
-    return apiItem.fields;
+    // formats as: "/:idValue"
+    const idFromName = apiItem.name.match(/\/[A-Za-z0-9]+$/)[0];
+
+    return {
+      id: idFromName.substring(1),
+      ...apiItem.fields
+    };
+  }
+
+  const loadingElements = () => {
+    const bookCards = [];
+    for (let i = 0; i < 4; i ++) {
+      bookCards.push(<BookCard key={i}/>);
+    }
+
+    return bookCards;
   }
 
   return (
-    <h1>Home</h1>
+    <>
+      <h1>Home</h1>
+      <section className="card-container">
+        { loading ?
+          loadingElements() :
+          books.map(book =>
+            <BookCard
+              key={book.id}
+              book={book}
+            />
+          )
+        }
+      </section>
+    </>
   );
 }
