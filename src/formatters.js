@@ -1,9 +1,15 @@
 import { average } from "color.js";
 
 export const processBookApiData = async (apiData) => {
-  const fBookApiData = apiData.documents.map(item => formatBookApiData(item));
-  const fBooksWithColor = await Promise.all(fBookApiData.map(book => setBookColor(book)));
-  return fBooksWithColor;
+  if (apiData.documents) {
+    const fBookApiData = apiData.documents.map(item => formatBookApiData(item));
+    const fBooksWithColor = await Promise.all(fBookApiData.map(book => setBookColor(book)));
+    return fBooksWithColor;
+  } else {
+    const fSingleBookData = formatBookApiData(apiData);
+    const fSingleBookWithColor = await setBookColor(fSingleBookData);
+    return fSingleBookWithColor;
+  }
 }
 
 const formatBookApiData = (apiItem) => {
