@@ -1,8 +1,8 @@
 import "./styles.scss";
-import { MONTHS } from "../../constants";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 import { average } from "color.js";
 
@@ -44,21 +44,17 @@ export default function BookCard({
     return null;
   }
 
-  const getPublishDateString = (dateString) => {
-    const date = new Date(dateString);
-    return `${MONTHS[date.getMonth()]} ${date.getDate()}`
-  }
-
   return (
     <Link className={`book-card ${ !fBook ? 'disabled' : '' }`} to={ `/books/${fBook ? fBook.id : '' }`}>
-      <div className="book-card-wrapper" style={{ backgroundImage: fBook ? `url(${fBook.img})` : 'none' }}>
+      <div className="book-card-wrapper" style={{ backgroundColor: bookColor ? bookColor : '' }}>
         <div className="img-wrapper" style={{ backgroundColor: bookColor ? bookColor : '' }}>
           <img className="img" src={ fBook ? fBook.img : blankImg } alt="" />
         </div>
         <div className="info">
+          <p className="genre">{ fBook ? fBook.genres[0] : <br /> }</p>
           <h2 className="title">{ fBook ? fBook.title : <br /> }</h2>
           <p className="author">{ fBook ? fBook.author : <br /> }</p>
-          <p className="date">{ fBook ? 'Published ' + getPublishDateString(fBook.publish_date) : <br /> }</p>
+          <button className="arrow"><BsFillArrowRightCircleFill className="icon" /></button>
         </div>
       </div>
     </Link>
