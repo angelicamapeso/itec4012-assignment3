@@ -50,7 +50,6 @@ export default function Home() {
 
   return (
     <>
-      <h1>Home</h1>
       <section className="card-container">
         { loading ?
           loadingElements() :
