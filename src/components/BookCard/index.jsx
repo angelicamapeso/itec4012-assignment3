@@ -52,7 +52,7 @@ export default function BookCard({
   return (
     <Link className={`book-card ${ !fBook ? 'disabled' : '' }`} to={ `/books/${fBook ? fBook.id : '' }`}>
       <div className="book-card-wrapper" style={{ backgroundImage: fBook ? `url(${fBook.img})` : 'none' }}>
-        <div className="img-wrapper" style={{ backgroundColor: bookColor ? bookColor : 'transparent' }}>
+        <div className="img-wrapper" style={{ backgroundColor: bookColor ? bookColor : '' }}>
           <img className="img" src={ fBook ? fBook.img : blankImg } alt="" />
         </div>
         <div className="info">
