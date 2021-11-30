@@ -1,7 +1,7 @@
 $bp-small: 43em;
 $bp-medium: 62em;
 $bp-large: 82em;
-$max-page-width: 112em;
+$max-page-width: 112rem;
 
 @mixin sm {
   @media (min-width: #{$bp-small}) {
