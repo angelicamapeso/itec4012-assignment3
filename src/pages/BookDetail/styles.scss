@@ -1,0 +1,188 @@
+@use "../../breakpoints";
+
+.book-detail {
+  width: 100%;
+  height: 100%;
+
+  .content-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: breakpoints.$max-page-width;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoints.md {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .img-container {
+    max-width: 20rem;
+
+    @include breakpoints.md {
+      max-width: none;
+      height: 60%;
+    }
+
+    .img {
+      width: 100%;
+      height: auto;
+      position: relative;
+      top: 2rem;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+
+      @include breakpoints.md {
+        top: 0;
+        left: 2rem;
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+
+  .info {
+    box-sizing: border-box;
+    background-color: white;
+
+    width: calc(100% + 4rem);
+    margin: 0 -2rem -1rem -2rem;
+    padding: 2rem;
+    padding-top: 2.5rem;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 1rem 1rem 0 0;
+
+    font-size: 1rem;
+
+    @include breakpoints.sm {
+      width: 100%;
+      margin: 0 0 -1rem 0;
+      font-size: 1.2rem;
+      flex-direction: row;
+    }
+
+    @include breakpoints.md {
+      min-height: 70%;
+      margin: 0 2rem 0 0;
+      border-radius: 1rem;
+      padding: 4rem;
+      padding-left: 4.5rem;
+      font-size: 1.4rem;
+      flex-direction: column;
+    }
+
+    @include breakpoints.lg {
+      font-size: 1.7rem;
+    }
+
+    @include breakpoints.cust(breakpoints.$max-page-width) {
+      font-size: 2rem;
+    }
+  }
+
+  p,
+  h2 {
+    margin: 0;
+  }
+
+  .main-genre {
+    font-size: 1em;
+    margin-top: 1em;
+    margin-bottom: 0.25em;
+
+    @include breakpoints.md {
+      margin-top: 0;
+    }
+  }
+
+  .title {
+    font-size: 1.5em;
+    margin-bottom: 0.25em;
+  }
+
+  .author {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  .date {
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .icon {
+      margin-right: 0.5em;
+    }
+  }
+
+  .text {
+    margin-bottom: 1em;
+
+    @include breakpoints.sm {
+      margin-bottom: 1.5em;
+      flex-basis: 60%;
+    }
+
+    @include breakpoints.md {
+      margin-bottom: 2em;
+      flex-basis: auto;
+    }
+
+    @include breakpoints.lg {
+      margin-bottom: 2.5em;
+    }
+  }
+
+  .genres {
+    margin-top: auto;
+    margin-bottom: 1em;
+
+    align-self: flex-start;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    @include breakpoints.sm {
+      margin-top: 1em;
+      flex-basis: 40%;
+    }
+
+    @include breakpoints.md {
+      margin-top: auto;
+      flex-basis: auto;
+    }
+
+    .genre-tag {
+      font-size: 0.9em;
+      background-color: rgb(230, 230, 230);
+      padding: 0.5em 1em;
+      margin-top: 0.5em;
+      margin-right: 0.75em;
+      border-radius: 0.25em;
+    }
+  }
+}
+
+.book-detail.loading {
+  .img {
+    background-color: white;
+  }
+
+  p,
+  h2 {
+    background-color: lightgray;
+  }
+
+  .info {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+  }
+}
