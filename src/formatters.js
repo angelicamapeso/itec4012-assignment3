@@ -15,11 +15,12 @@ export const processBookApiData = async (apiData) => {
 const formatBookApiData = (apiItem) => {
   // formats as: "/:idValue"
   const idFromName = apiItem.name.match(/\/[A-Za-z0-9]+$/)[0];
-  const { genres, author, publish_date, img, title } = apiItem.fields;
+  const { genres, author, descrip, publish_date, img, title } = apiItem.fields;
 
   return {
     id: idFromName.substring(1),
     genres: genres.arrayValue.values.map(genreValue => genreValue.stringValue),
+    descrip: descrip.arrayValue.values.map(descripVal => descripVal.stringValue),
     author: author.stringValue,
     publish_date: publish_date.timestampValue,
     img: img.stringValue,
