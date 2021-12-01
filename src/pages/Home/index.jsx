@@ -1,6 +1,8 @@
 import "./styles.scss";
 
 import { useState, useEffect, useContext } from "react";
+
+import { processBookApiData } from "../../formatters";
 import BookContext from "../../context/BookContext";
 
 import BookCard from "../../components/BookCard";
@@ -18,7 +20,7 @@ export default function Home() {
     try {
       const bookApiReq = await fetch('https://firestore.googleapis.com/v1/projects/books-f29dc/databases/(default)/documents/books/');
       const bookApiData = await bookApiReq.json();
-      const fBookApiData = bookApiData.documents.map(item => formatBookApiData(item));
+      const fBookApiData = await processBookApiData(bookApiData);
 
       setBooks(fBookApiData);
       bookContext.initializeBooks(fBookApiData);
@@ -28,16 +30,6 @@ export default function Home() {
       setLoading(false);
     }
   };
-
-  const formatBookApiData = (apiItem) => {
-    // formats as: "/:idValue"
-    const idFromName = apiItem.name.match(/\/[A-Za-z0-9]+$/)[0];
-
-    return {
-      id: idFromName.substring(1),
-      ...apiItem.fields
-    };
-  }
 
   const loadingElements = () => {
     const bookCards = [];
@@ -49,18 +41,16 @@ export default function Home() {
   }
 
   return (
-    <>
-      <section className="card-container">
-        { loading ?
-          loadingElements() :
-          books.map(book =>
-            <BookCard
-              key={book.id}
-              book={book}
-            />
-          )
-        }
-      </section>
-    </>
+    <section className="card-container">
+      { loading ?
+        loadingElements() :
+        books.map(book =>
+          <BookCard
+            key={book.id}
+            book={book}
+          />
+        )
+      }
+    </section>
   );
 }
