@@ -20,3 +20,9 @@ $max-page-width: 112rem;
     @content;
   }
 }
+
+@mixin cust($bp) {
+  @media (min-width: #{$bp}) {
+    @content;
+  }
+}
