@@ -43,6 +43,19 @@ export default function BookDetail() {
     return `${MONTHS[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
   }
 
+  const processDescrip = (descripArray) => {
+    const fDescrip = [...descripArray];
+
+    descripArray.forEach((descripVal, i) => {
+      if (descripVal.includes("\\n")) {
+        const toInsert = descripVal.split(/\\n/);
+        fDescrip[i] = toInsert.map(beforeBreak => <>{ beforeBreak }<br/></>);
+      }
+    });
+
+    return fDescrip;
+  }
+
   return (
     <section className={`book-detail ${ loading ? 'loading' : ''}`} style={{ backgroundColor: book && book.color ? book.color : 'white' }}>
       <div className="content-container">
@@ -58,6 +71,12 @@ export default function BookDetail() {
               { book ? <MdCalendarToday className="icon" /> : null }
               { book ? 'Published ' + getPublishDate(book.publish_date) : <br /> }
             </p>
+            <div className="descrip">
+              { book ?
+                processDescrip(book.descrip).map((descrip, i) => <p key={i} className="descrip-para">{ descrip }</p>) :
+                null
+              }
+            </div>
           </div>
           <div className="genres">
             { book ?
