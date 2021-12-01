@@ -41,18 +41,16 @@ export default function Home() {
   }
 
   return (
-    <>
-      <section className="card-container">
-        { loading ?
-          loadingElements() :
-          books.map(book =>
-            <BookCard
-              key={book.id}
-              book={book}
-            />
-          )
-        }
-      </section>
-    </>
+    <section className="card-container">
+      { loading ?
+        loadingElements() :
+        books.map(book =>
+          <BookCard
+            key={book.id}
+            book={book}
+          />
+        )
+      }
+    </section>
   );
 }
