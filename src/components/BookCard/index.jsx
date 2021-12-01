@@ -3,17 +3,17 @@ import "./styles.scss";
 import { Link } from "react-router-dom";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
+import { BLANK_IMG } from "../../constants";
+
 
 export default function BookCard({
   book = null,
 }) {
-  const blankImg = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
-
   return (
     <Link className={`book-card ${ !book ? 'disabled' : '' }`} to={ `/book/${book ? book.id : '' }`}>
       <div className="book-card-wrapper" style={{ backgroundColor: book && book.color ? book.color : '' }}>
         <div className="img-wrapper" style={{ backgroundColor: book &&  book.color ? book.color : '' }}>
-          <img className="img" src={ book ? book.img : blankImg } alt="" />
+          <img className="img" src={ book ? book.img : BLANK_IMG } alt="" />
         </div>
         <div className="info">
           <p className="genre">{ book ? book.genres[0] : <br /> }</p>

@@ -12,3 +12,5 @@ export const MONTHS = [
   "November",
   "December",
 ];
+
+export const BLANK_IMG = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
