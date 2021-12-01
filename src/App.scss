@@ -24,5 +24,5 @@ body {
 
 main {
   width: 100%;
-  max-width: breakpoints.$max-page-width;
+  flex-grow: 1;
 }
